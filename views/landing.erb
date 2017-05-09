@@ -1,0 +1,22 @@
+<div class="col-sm-6 well">
+  <h1>I'm here to MAKE surveys!</h1>
+  <a href="/survey_home"><button type="button" name="button">Survey Editor</button></a>
+</div>
+<div class="col-sm-6 well">
+  <h1>I'm here to TAKE surveys!</h1>
+  <% if @surveys.any? %>
+    <form class="horizontal-inline" action="/quiz_form" method="post">
+      <label for="user_name">Your name:</label>
+      <input type="text" id="user_name" name="user_name">
+      <select name="survey_choice" id="survey_choice">
+        <% @surveys.each() do |survey| %>
+          <option value="<%= survey.id()%>"><%= survey.name() %></option>
+        <% end %>
+      </select>
+
+      <button type="submit" name="button">Submit</button>
+    </form>
+  <% else %>
+    <h4>No surveys yet.</h4>
+  <% end %>
+</div>

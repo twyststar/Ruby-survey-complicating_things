@@ -17,6 +17,14 @@ describe(Survey) do
       expect(test_survey.questions()).to(eq([test_question1, test_question2]))
     end
   end
+  describe("#questions") do
+    it("will grab question by index") do
+      test_survey = Survey.create({:name => "Kitten preference"})
+      test_question1 = Question.create({:q_text => "Do you prefer a black or white kitten?", :survey_id => test_survey.id()})
+      test_question2 = Question.create({:q_text => "Do you prefer a calico or siamese kitten?", :survey_id => test_survey.id()})
+      expect(test_survey.questions[1].id()).to(eq(test_question2.id()))
+    end
+  end
 
   it("validates presence of description") do
     @survey = Survey.new({:name => ""})

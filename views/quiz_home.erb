@@ -1,0 +1,28 @@
+
+<div class="well">
+
+  <form class="horizontal-inline" action="/respondants/<%= @respondant.id()%>/<%= @survey.id()%>/<%=  @count %>" method="post">
+
+    <h2><%= @survey.name%></h2>
+    <h2>Thanks <%= @respondant.user_name%> <%= @count %></h2>
+    <input type="hidden" name="question_id" value="<%= @survey.questions[@count].id() %>">
+    <% survey_order = @survey.questions() %>
+    <% if @count + 1 <= survey_order.length()%>
+      <% if @survey.questions[@count].opt_1?%>
+      <label for="answer"><%= @survey.questions[@count].q_text%></label>
+      <select name="answer" id="answer">
+        <option><%= @survey.questions[@count].opt_1()%></option>
+        <option><%= @survey.questions[@count].opt_2()%></option>
+        <option><%= @survey.questions[@count].opt_3()%></option>
+      </select>
+      <% else %>
+        <label for="answer"><%= @survey.questions[@count].q_text%></label>
+        <input type="text" id="answer" name="answer">
+      <% end %>
+    <button type="submit" name="button">Next</button>
+  </form>
+  <% else %>
+    <h3>Yo done.</h3>
+  <% end %>
+</div>
+<!-- Question _ of _ -->

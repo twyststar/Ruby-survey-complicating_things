@@ -10,11 +10,35 @@
   </div>
 <% end %>
 <div class="well">
-  <h2>Questions for <%= @survey.name() %></h2>
+  <h2>Text Response Questions for <%= @survey.name() %></h2>
   <form class="horizontal-inline" action="/surveys/<%= @survey.id()%>/questions" method="post">
     <label for="q_text">Enter your question here:</label>
     <input type="text" id="q_text" name="q_text">
     <input type="hidden" name="survey_id" value="<%=@survey.id()%>">
+    <button type="submit" name="button">Add Question</button>
+  </form>
+</div>
+
+<div class="well">
+  <h2>Multiple Choice Response Questions for <%= @survey.name() %></h2>
+  <form class="horizontal-inline" action="/surveys_mult/<%= @survey.id()%>/questions" method="post">
+    <div class="row">
+      <div class="form-group col-sm-3">
+        <label for="q_text">Enter your question here:</label>
+        <input type="text" id="q_text" name="q_text">
+      </div>
+      <input type="hidden" name="survey_id" value="<%=@survey.id()%>">
+      <div class="form-group col-sm-7">
+        <label for="opt_1">Enter your answer option:</label>
+        <input type="text" id="opt_1" name="opt_1">
+
+        <label for="opt_2">Enter your answer option:</label>
+        <input type="text" id="opt_2" name="opt_2">
+
+        <label for="opt_3">Enter your answer option:</label>
+        <input type="text" id="opt_3" name="opt_3">
+      </div>
+    </div>
     <button type="submit" name="button">Add Question</button>
   </form>
 </div>

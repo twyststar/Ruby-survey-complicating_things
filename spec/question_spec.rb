@@ -13,4 +13,23 @@ describe(Question) do
     @question = Question.new({:q_text => ""})
     expect(@question.save()).to(eq(false))
   end
+
+  describe('#opt_1') do
+    it('has opt_1')do
+      @question = Question.new({:q_text => "", :opt_1 => "opt_1"})
+      expect(@question.opt_1()).to(eq("opt_1"))
+    end
+  end
+  describe('#opt_1') do
+    it('has opt_1')do
+      @question = Question.new({:q_text => "", :opt_1 => "opt_1"})
+      expect(@question.opt_1?()).to(eq(true))
+    end
+  end
+  describe('#opt_1') do
+    it('has no opt_1')do
+      @question = Question.new({:q_text => ""})
+      expect(@question.opt_1?()).to(eq(false))
+    end
+  end
 end

@@ -1,9 +1,23 @@
 <div class="well">
   <h4>Current question text to edit "<%= @question.q_text() %>"</h4>
+  <%if @question.opt_1?%>
+    <ul>
+      <li><%=@question.opt_1()%></li>
+      <li><%=@question.opt_2()%></li>
+      <li><%=@question.opt_3()%></li>
+    </ul>
+  <%end%>
   <form class="horizontal-inline" action="/surveys/<%= @survey.id()%>/questions/<%= @question.id() %>" method="post">
     <input type="hidden" name="_method" value="patch">
     <label for="q_text">Question Text:</label>
     <input type="text" id="q_text" name="q_text">
+    <br>
+  <%if @question.opt_1?%>
+    <label for="q_text">Edit Answer Option Text:</label>
+    <input type="text" id="opt_1" name="opt_1">
+    <input type="text" id="opt_2" name="opt_2">
+    <input type="text" id="opt_3" name="opt_3">
+  <%end%>
     <button type="submit" name="button">Submit</button>
   </form>
 
